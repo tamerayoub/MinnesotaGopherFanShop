@@ -1,0 +1,342 @@
+<!-- Modified by Tamer Ayoub 08/11/2023 -->
+
+<!-- This is our main home page, includes our header picture, navbar, side menu and more! -->
+
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Minnesota Gophers Fan Page</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+	<script type="text/javascript">
+		var user = '{{request.user}}'
+
+		function getToken(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken')
+
+		function getCookie(name) {
+		    // Split cookie string and get all individual name=value pairs in an array
+		    var cookieArr = document.cookie.split(";");
+
+		    // Loop through the array elements
+		    for(var i = 0; i < cookieArr.length; i++) {
+		        var cookiePair = cookieArr[i].split("=");
+
+		        /* Removing whitespace at the beginning of the cookie name
+		        and compare it with the given string */
+		        if(name == cookiePair[0].trim()) {
+		            // Decode the cookie value and return
+		            return decodeURIComponent(cookiePair[1]);
+		        }
+		    }
+
+		    // Return null if not found
+		    return null;
+		}
+		var cart = JSON.parse(getCookie('cart'))
+
+		if (cart == undefined){
+			cart = {}
+			console.log('Cart Created!', cart)
+			document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+		}
+		console.log('Cart:', cart)
+	
+	</script>
+
+	<nav class="navbar navbar-expand-lg navbar-dark maroon">
+
+		<div>
+			<img src="{% static 'images/University_of_Minnesota_Logo.png' %}" alt="University of Minnesota Logo" class="img-fluid" style="max-height: 50px;">
+		</div>
+		
+		<div>
+			<a class="navbar-brand sporty-text" href="{% url 'store' %}">
+				GOLDEN GOPHERS 
+			<br>
+				FAN SHOP
+			</a>
+		</div>
+		
+		<div class="SearchBar">
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2 search-bar" type="search" placeholder="Search" aria-label="Search">
+			</form>
+		</div>
+
+		<div class="big_ten_logo">
+			<img src="{% static 'images/Big_Ten_Conference_logo.png' %}" alt="Big Ten Logo" style="max-height: 50px;">
+		</div>
+
+		<div class="nike_logo">
+			<img src="{% static 'images/white_nike_logo.png' %}" alt="Big Ten Logo"  style="width: 100px; height: 100px;">
+		</div>
+
+		<div class="collapse navbar-collapse" id="header-sub-headings">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+				<a class="nav-link" href="{% url 'store' %}">Store  <span class="sr-only">(current)</span></a>	
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="{% url 'store' %}">Locations  <span class="sr-only">(current)</span></a>	
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="{% url 'store' %}">Fan Cash  <span class="sr-only">(current)</span></a>	
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="{% url 'store' %}">Help  <span class="sr-only">(current)</span></a>	
+				</li>
+			</ul>
+			<div class="form-inline my-2 my-lg-0">
+				<a href="#"class="btn btn-warning">Login</a>
+				
+				<a href="{% url 'cart' %}">
+					<img  id="cart-icon" src="{% static 'images/cart.png' %}">
+				</a>
+				<p id="cart-total">{{cartItems}}</p>
+
+			</div>
+		</div>
+		
+	</nav>
+
+	<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav d-flex justify-content-between w-100">
+				<li class="nav-item">
+					<a class="nav-link" href="#" style="color: black;">Shirts</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" style="color: black;">Women's</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" style="color: black;">Men's</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" style="color: black;">Sweaters</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" style="color: black;">Season Passes</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" style="color: black;">Tickets</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" style="color: black;">Hats</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" style="color: black;">Accessories</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" style="color: black;">Clearance</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" style="color: black;">Pants</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" style="color: black;">Pajamas</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" style="color: black;">Tailgate</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="discount-container">
+		<p class="text-black">Get 20% off on all merchandise! Use code: SUMMER20</p>
+	</div>
+
+
+  <header>
+	<img class="headerimg" src="{% static 'images/header.jpg' %}" alt="Header Image">
+  </header>
+
+</head>
+
+
+
+<body>
+
+
+    <div class="container">
+
+		<section class="side-section">
+	
+
+			<h2 class="category">Categories</h2>
+            <ul>
+                <li class="category">Men</li>
+                <li class="category">Women</li>
+                <li class="category">Kids</li>
+                <li class="category">Shirts</li>
+                <li class="category">Sweaters</li>
+                <li class="category">Pants</li>
+                <li class="category">Accessories</li>
+                <!-- Add more categories here -->
+            </ul>
+		
+			<!-- Add more customizable options here -->
+		
+		</section>
+		
+		<br>
+
+		<main class="main-section">
+		{% block content %}
+
+
+		{% endblock content %}
+		</main>
+
+    </div>
+
+	<br>
+
+
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+	<!-- cart.js is where we handle updating quanity logic -->
+	<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+</body>
+
+
+<footer style="background-color: #6a1c34;">
+	<div class="container py-4">
+		<div class="row">
+			<div class="col-md-4">
+				<h5 class="text-white">About Us</h5>
+				<p class="text-white">We are dedicated to providing high-quality merchandise for the University of Minnesota community.</p>
+			</div>
+			<div class="col-md-4">
+				<h5 class="text-white">Quick Links</h5>
+				<ul class="list-unstyled">
+					<li><a href="#" class="text-white">Careers</a></li>
+					<li><a href="#" class="text-white">About</a></li>
+					<li><a href="#" class="text-white">Contact Us</a></li>
+					<!-- Add more links as needed -->
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<h5 class="text-white">Contact Us</h5>
+				<p class="text-white">Email: info@universitymerch.com</p>
+				<p class="text-white">Phone: (123) 456-7890</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+</html>
+
+
+<style>
+	.discount-container {
+		background-color: black; /* Customize the background color */
+		color: white;
+		text-align: center;
+		padding: 10px 0;
+		font-weight: bolder;
+		font-size: larger;
+	
+		width: 100%;
+		z-index: 1000; /* Adjust as needed to ensure it's above other elements */
+	}
+</style>
+
+
+<style>
+	.sporty-text {
+		display: inline-block;
+		padding: 5px 10px;
+	
+		color: white;
+		font-weight: bold;
+		
+		
+	
+		transition: transform 0.2s ease-in-out;
+	}
+
+	.sporty-text:hover {
+		transform: skewX(-20deg) scale(1.05); /* Enlarge the text on hover */
+	}
+</style>
+
+
+
+
+
+<style>
+	.custom-navbar {
+		background-color: #ffbe3c; /* Yellowish-orange background color */
+	}
+	.custom-navbar .nav-link {
+		color: black;
+	}
+</style>
+
+
+<style>
+	header {
+		width: 100%; /* Spread the header across the entire width of the container */
+		overflow: hidden; /* Hide any overflow to prevent horizontal scrolling */
+		position: relative;
+		max-height: 20vh;
+	}
+	.headerimg {
+            width: 100%; /* Make the image take up 100% of the width within the header */
+           /* Automatically adjust the height to maintain the aspect ratio */
+            display: block; /* Remove any default spacing around the image */
+            height: 10%;
+
+		
+            top: 0; /* Position the image at the top of the header */
+            left: 0; /* Position the image at the left of the header */
+			
+        }
+</style>
+
+
+<style>
+    .category {
+        background-color: blue;
+    }
+
+	.nike_logo {
+		margin-left: 50px;
+	}
+	
+	.big_ten_logo {
+		margin-left: 50px;
+	}
+
+	#header-sub-headings {
+		margin-left: 40px;
+	}
+</style>
