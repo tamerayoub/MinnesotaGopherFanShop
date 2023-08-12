@@ -1,3 +1,5 @@
+/* Modified by Tamer Ayoub - 08/12/23 */
+
 body{
 	background-color: hsl(0, 0%, 98%);
 }
@@ -158,3 +160,132 @@ body {
     margin: 10px;
 }
 
+.category {
+	background-color: blue;
+}
+
+.nike_logo {
+	margin-left: 50px;
+}
+
+.big_ten_logo {
+	margin-left: 50px;
+}
+
+#header-sub-headings {
+	margin-left: 40px;
+}
+
+
+.image-container {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+
+.image-wrapper {
+	flex: 1;
+	max-width: 100%;
+}
+
+
+.image-wrapper img {
+	max-width: 100%;
+	height: auto;
+	margin: 0;
+}
+
+
+
+.category {
+	background-color: blue;
+}
+
+.nike_logo {
+	margin-left: 50px;
+}
+
+.big_ten_logo {
+	margin-left: 50px;
+}
+
+#header-sub-headings {
+	margin-left: 40px;
+}
+
+
+.image-container {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
+}
+
+
+.image-wrapper {
+	flex: 1;
+	max-width: 100%;
+}
+
+
+.image-wrapper img {
+	max-width: 100%;
+	height: auto;
+	margin: 0;
+}
+
+
+header {
+	width: 100%; /* Spread the header across the entire width of the container */
+	overflow: hidden; /* Hide any overflow to prevent horizontal scrolling */
+	position: relative;
+	max-height: 20vh;
+}
+
+
+.headerimg {
+	width: 100%; /* Make the image take up 100% of the width within the header */
+	display: block; /* Remove any default spacing around the image */
+	height: 10%;
+	top: 0; /* Position the image at the top of the header */
+	left: 0; /* Position the image at the left of the header */
+}
+
+.payment-types-banner {
+	width: 100%;     
+	top: 0; /* Position the image at the top of the header */
+	left: 0; /* Position the image at the left of the header */
+}
+
+.custom-navbar {
+	background-color: #ffbe3c; /* Yellowish-orange background color */
+}
+.custom-navbar .nav-link {
+	color: black;
+}
+
+.sporty-text {
+	display: inline-block;
+	padding: 5px 10px;
+	color: white;
+	font-weight: bold;
+	transition: transform 0.2s ease-in-out;
+}
+
+.sporty-text:hover {
+	transform: skewX(-20deg) scale(1.05); /* Enlarge the text on hover */
+}
+
+.discount-container {
+	background-color: black; /* Customize the background color */
+	color: white;
+	text-align: center;
+	padding: 5px 0;
+	font-weight: bolder;
+	width: 100%;
+	z-index: 1000; /* Adjust as needed to ensure it's above other elements */
+	font-size: 20px; /* Adjust the font size as needed */
+}
