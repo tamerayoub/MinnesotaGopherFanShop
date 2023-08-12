@@ -67,11 +67,11 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark maroon">
 
-		<div>
+		<div class="gopherLogo">
 			<img src="{% static 'images/University_of_Minnesota_Logo.png' %}" alt="University of Minnesota Logo" class="img-fluid" style="max-height: 50px;">
 		</div>
 		
-		<div>
+		<div class="gopherTitle">
 			<a class="navbar-brand sporty-text" href="{% url 'store' %}">
 				GOLDEN GOPHERS 
 			<br>
@@ -108,15 +108,17 @@
 					<a class="nav-link" href="{% url 'store' %}">Help  <span class="sr-only">(current)</span></a>	
 				</li>
 			</ul>
-			<div class="form-inline my-2 my-lg-0">
-				<a href="#"class="btn btn-warning">Login</a>
-				
-				<a href="{% url 'cart' %}">
-					<img  id="cart-icon" src="{% static 'images/cart.png' %}">
-				</a>
-				<p id="cart-total">{{cartItems}}</p>
+		
+		</div>
 
-			</div>
+		<div class="form-inline my-2 my-lg-1">
+			<a href="#"class="btn btn-warning">Login</a>
+			
+			<a href="{% url 'cart' %}">
+				<img  id="cart-icon" src="{% static 'images/cart.png' %}">
+			</a>
+			<p id="cart-total">{{cartItems}}</p>
+
 		</div>
 		
 	</nav>
@@ -181,23 +183,16 @@
 
     <div class="container">
 
-		<section class="side-section">
+		<section class="image-container">
 	
+			<div class="image-wrapper">
+				<img src="{% static 'images/nike_gear_ad.jpg' %}" alt="Big Ten Logo">
+				<img src="{% static 'images/nike_sweater_ad.jpg' %}" alt="Nike Gear Ad">
+				<img src="{% static 'images/football_ad.jpg' %}" alt="Nike Gear Ad">
+			</div>
+			
+			<hr>
 
-			<h2 class="category">Categories</h2>
-            <ul>
-                <li class="category">Men</li>
-                <li class="category">Women</li>
-                <li class="category">Kids</li>
-                <li class="category">Shirts</li>
-                <li class="category">Sweaters</li>
-                <li class="category">Pants</li>
-                <li class="category">Accessories</li>
-                <!-- Add more categories here -->
-            </ul>
-		
-			<!-- Add more customizable options here -->
-		
 		</section>
 		
 		<br>
@@ -213,6 +208,8 @@
 
 	<br>
 
+	<img class="payment-types-banner" src="{% static 'images/payment_logo_banner.jpg' %}" alt="Payment Types Banner">
+
 
 
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -225,6 +222,7 @@
 	<!-- cart.js is where we handle updating quanity logic -->
 	<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
 </body>
+
 
 
 <footer style="background-color: #6a1c34;">
@@ -320,12 +318,22 @@
             left: 0; /* Position the image at the left of the header */
 			
         }
+
+	.payment-types-banner {
+
+		width: 100%;     
+		
+		top: 0; /* Position the image at the top of the header */
+		left: 0; /* Position the image at the left of the header */
+
+	}
 </style>
 
 
 <style>
     .category {
         background-color: blue;
+		
     }
 
 	.nike_logo {
@@ -339,4 +347,30 @@
 	#header-sub-headings {
 		margin-left: 40px;
 	}
+
+
+	.image-container {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+
+	}
+
+
+	.image-wrapper {
+		flex: 1;
+		max-width: 100%;
+	}
+
+
+	.image-wrapper img {
+		max-width: 100%;
+		height: auto;
+		margin: 0;
+	}
+
+
+
+
 </style>

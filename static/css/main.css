@@ -132,12 +132,11 @@ body {
 }
 
 .container {
-	max-width: fit-content;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
+	display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    max-width: 100%;
+    padding: 10px;
 }
 
 .side-section {
@@ -159,20 +158,3 @@ body {
     margin: 10px;
 }
 
-
-/* Responsive layout adjustments */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    .side-section,
-    .main-section {
-        flex: 1;
-        margin: 10px 0;
-    }
-}
-
-.nav-item {
-	color: black;
-}
